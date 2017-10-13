@@ -9,7 +9,7 @@
 
 #### 2. 将jar包和so复制到对应的位置
 
-![github](https://github.com/FeiyuCloud/android-sdk-demo/master/img/fycloud-androidstudio.png "github")
+![github](https://github.com/FeiyuCloud/android-sdk-demo/blob/master/img/fycloud-androidstudio.png "github")
 
 #### 3. SDK所需权限:
 
