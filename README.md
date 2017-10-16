@@ -33,8 +33,8 @@
 
 ```groovy
 compileOptions {
-sourceCompatibility JavaVersion.VERSION_1_7
-targetCompatibility JavaVersion.VERSION_1_7
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
 }
 ```
 
@@ -45,11 +45,23 @@ targetCompatibility JavaVersion.VERSION_1_7
 -keep class com.feiyucloud.** { *; }
 ```
 
-#### 6. 多人语音
+#### 6. 使用
+
+- 创建FYRtcEngine：
 ```java
-FYRtcEngine engine = FYRtcEngine.create(mContext, appId, apptoken, mRtcEventHandler);
-engine.joinChannel(channelId, mUid, option);
+public static FYRtcEngine create(Context context, String appId, String appToken, FYRtcEventHandler handler);
 ```
 
+- 多人语音：
+```java
+public void joinChannel(String channelId, String uid, FYOptionData option);
+```
+
+- 点到点语音：
+```java
+public void dialPeer(String calleeUid, String callerUid, FYOptionData option);
+```
+
+#### 更多内容请参考：[https://www.feiyucloud.com](https://www.feiyucloud.com)
 
 <br/>
