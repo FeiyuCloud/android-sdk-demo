@@ -11,6 +11,7 @@
 
 ![github](https://github.com/FeiyuCloud/android-sdk-demo/blob/master/img/fycloud-androidstudio.png "github")
 
+
 #### 3. SDK所需权限:
 
 ```xml
@@ -27,9 +28,8 @@
 
 当targetSdkVersion大于等于23的时候，请在调用SDK前申请好所需权限。
 
-#### 4. 编译时java版本
 
-使用java7及以上版本编译
+#### 4. 编译时java版本
 
 ```groovy
 compileOptions {
@@ -45,6 +45,7 @@ compileOptions {
 -keep class com.feiyucloud.** { *; }
 ```
 
+
 #### 6. 使用
 
 - 创建FYRtcEngine：
@@ -52,7 +53,7 @@ compileOptions {
 public static FYRtcEngine create(Context context, String appId, String appToken, FYRtcEventHandler handler);
 ```
 
-- 多人语音：
+- 加入频道：
 ```java
 public void joinChannel(String channelId, String uid, FYOptionData option);
 ```
