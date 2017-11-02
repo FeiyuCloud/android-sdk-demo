@@ -32,9 +32,6 @@ import java.util.ArrayList;
 public class ChannelActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
 
-    private static final String APP_ID = your_app_id;
-    private static final String APP_TOKEN = your_app_token;
-
     private FYRtcEngine mEngine;
     private InternalHandler mHandler;
     private TextView mTextState;
@@ -86,7 +83,9 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mEventAdapter);
 
-        mEngine = FYRtcEngine.create(this, APP_ID, APP_TOKEN, mRtcEventHandler);
+        String appId = getString(R.string.app_id);
+        String appToken = getString(R.string.app_token);
+        mEngine = FYRtcEngine.create(this, appId, appToken, mRtcEventHandler);
         mEngine.joinChannel(channelId, mUserId, null);
     }
 

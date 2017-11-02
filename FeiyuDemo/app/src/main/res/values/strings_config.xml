@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- 请将appId和appToken保存在安全的位置 -->
+    <!-- 获取appId和appToken：https://portal.feiyucloud.com/applist -->
+    <!-- 填写您的appId和appToken，记得删除<##> -->
+    <string name="app_id"><#app_id#></string>
+    <string name="app_token"><#app_token#></string>
+
+</resources>
