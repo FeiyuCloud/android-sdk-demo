@@ -3,8 +3,8 @@
 #### 1. 开发环境要求:
 
 > * Android SDK API Level >= 16
-> * Android Studio 2.0 或以上版本
 > * 支持语音功能的真机
+> * 准备好 AppID 和 AppToken
 
 
 #### 2. 将jar包和so复制到对应的位置
@@ -29,7 +29,7 @@
 当targetSdkVersion大于等于23的时候，请在调用SDK前申请好所需权限。
 
 
-#### 4. 编译时java版本
+#### 4. java版本
 
 ```groovy
 compileOptions {
@@ -62,6 +62,12 @@ public void joinChannel(String channelId, String uid, FYOptionData option);
 ```java
 public void dialPeer(String calleeUid, String callerUid, FYOptionData option);
 ```
+
+<br/>
+
+> channelId，uid格式：长度不超过40的字符串，支持的字符集范围: a-z,A-Z,0-9,_,-
+
+
 
 #### 更多内容请参考：[https://www.feiyucloud.com](https://www.feiyucloud.com)
 
