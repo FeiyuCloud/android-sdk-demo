@@ -42,6 +42,7 @@ compileOptions {
 #### 5. 混淆
 
 ```
+-keepattributes Signature
 -keep class com.feiyucloud.** { *; }
 ```
 

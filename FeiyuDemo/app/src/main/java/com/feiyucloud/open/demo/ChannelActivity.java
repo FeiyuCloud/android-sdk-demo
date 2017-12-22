@@ -38,6 +38,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
     private RecyclerView mRecyclerView;
     private EventAdapter mEventAdapter;
 
+    private String mChannelId;
     private ArrayList<String> mEventList = new ArrayList<>();
     private static final int MSG_COUNTER = 1;
     private static final int MSG_EVENT = 2;
@@ -60,12 +61,12 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_channel);
 
         Intent intent = getIntent();
-        String channelId = intent.getStringExtra("channel_id");
+        mChannelId = intent.getStringExtra("channel_id");
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        TextView textChannelId = (TextView) findViewById(R.id.text_channel_id);
-        textChannelId.setText(channelId);
-        mTextState = (TextView) findViewById(R.id.text_state);
+        mRecyclerView = findViewById(R.id.recycler_view);
+        TextView textChannelId = findViewById(R.id.text_channel_id);
+        textChannelId.setText(mChannelId);
+        mTextState = findViewById(R.id.text_state);
         mTextState.setText("正在加入");
 
         ((ToggleButton) findViewById(R.id.toggle_speaker)).setOnCheckedChangeListener(this);
@@ -75,7 +76,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         mHandler = new InternalHandler(this);
 
         mEventAdapter = new EventAdapter(this);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 OrientationHelper.VERTICAL, false);
@@ -86,7 +87,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         String appId = getString(R.string.app_id);
         String appToken = getString(R.string.app_token);
         mEngine = FYRtcEngine.create(this, appId, appToken, mRtcEventHandler);
-        mEngine.joinChannel(channelId, mUserId, null);
+        mEngine.joinChannel(mChannelId, mUserId, null);
     }
 
     @Override
@@ -121,11 +122,11 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         int id = compoundButton.getId();
         if (id == R.id.toggle_speaker) {
-            mEngine.setEnableSpeaker(isChecked);
+            mEngine.enableSpeaker(isChecked);
         } else if (id == R.id.toggle_mute_local) {
             mEngine.muteLocalAudio(isChecked);
         } else if (id == R.id.toggle_mute_other) {
-            mEngine.muteOtherRemoteAudio(mUserId, isChecked);
+            mEngine.muteOtherAudio(mChannelId, mUserId, isChecked);
         }
     }
 
@@ -239,7 +240,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
 
         EventViewHolder(View itemView) {
             super(itemView);
-            textEvent = (TextView) itemView.findViewById(R.id.text_event);
+            textEvent = itemView.findViewById(R.id.text_event);
         }
     }
 
