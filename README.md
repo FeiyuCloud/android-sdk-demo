@@ -94,17 +94,16 @@ public void dialPeer(String calleeUid, String callerUid, FYOptionData option);
 
 - 准备接听点到点来电：
 
-主叫呼叫被叫时，可以使用离线推送（如小米push）通知被叫，被叫调用`calleePrepare`准备接听来电，调用成功后一段时间内都可以接听到点到点语音来电。
-
-注意：`calleePrepare`的参数需和`dialPeer`的calleeUid保持一致。
-
 ```java
-public void calleePrepare(String callerUid);
+public void calleePrepare(String uid);
 ```
 | 参数 | 是否必须 | 描述 |
 | --- | --- | --- |
-| callerUid | 是 | 当前的uid |
+| uid | 是 | 当前的uid |
 
+主叫呼叫被叫时，可以使用离线推送（如小米push）通知被叫，被叫调用`calleePrepare`准备接听来电，调用成功后一段时间内都可以接听到点到点语音来电。
+
+注意：`calleePrepare`的参数需和`dialPeer`的calleeUid保持一致。
 
 <br/>
 
