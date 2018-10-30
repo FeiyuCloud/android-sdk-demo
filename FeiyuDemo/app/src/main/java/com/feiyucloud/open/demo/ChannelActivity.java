@@ -2,7 +2,6 @@ package com.feiyucloud.open.demo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -43,7 +42,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
     private static final int MSG_COUNTER = 1;
     private static final int MSG_EVENT = 2;
 
-    private String mUserId = Build.SERIAL;
+    private String mUserId;
     private int mCallDuration = 0;
 
     static void joinChannel(Context context, String channelId) {
@@ -61,6 +60,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_channel);
 
         Intent intent = getIntent();
+        mUserId = Utils.getUserId(this);
         mChannelId = intent.getStringExtra("channel_id");
 
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -84,15 +84,15 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mEventAdapter);
 
-        String appId = getString(R.string.app_id);
-        String appToken = getString(R.string.app_token);
-        mEngine = FYRtcEngine.create(this, appId, appToken, mRtcEventHandler);
+        DemoApp.instance().addEventHandler(mRtcEventHandler);
+        mEngine = DemoApp.instance().createFYRtcEngine();
         mEngine.joinChannel(mChannelId, mUserId, null);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        DemoApp.instance().removeEventHandler(mRtcEventHandler);
         if (mHandler != null) {
             if (mHandler.hasMessages(MSG_COUNTER)) {
                 mHandler.removeMessages(MSG_COUNTER);
@@ -101,9 +101,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
                 mHandler.removeMessages(MSG_EVENT);
             }
         }
-        FYRtcEngine.destroy();
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -143,7 +141,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         @Override
-        public void onLeaveChannel(RtcStats stats) {
+        public void onLeaveChannel() {
             Toast.makeText(ChannelActivity.this, "LeaveChannel", Toast.LENGTH_SHORT).show();
             ChannelActivity.this.finish();
         }

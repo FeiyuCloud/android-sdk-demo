@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.feiyucloud.open.demo.MainActivity">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
-    <EditText
-        android:id="@+id/edit_channel_id"
+    <Button
+        android:id="@+id/btn_test_join_channel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
+        android:text="Test Join Channel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_test_voip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Test VoIP"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_test_join_channel" />
+
+
+    <EditText
+        android:id="@+id/edit_uid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
         android:gravity="center_horizontal"
-        android:hint="Channel id"
+        android:hint="user id"
         android:inputType="text"
         android:maxLines="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintRight_toLeftOf="@+id/btn_save"
+        app:layout_constraintTop_toBottomOf="@+id/btn_test_voip" />
 
     <Button
-        android:id="@+id/btn_join"
+        android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Join Channel"
-        app:layout_constraintHorizontal_bias="0.50"
+        android:text="Save"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_uid"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="user id 用于 JoinChannel ，dialPeer 和 CalleePrepare \nCalleePrepare 时不能为空，其他情况可为空"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_channel_id"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_uid" />
+
 </android.support.constraint.ConstraintLayout>

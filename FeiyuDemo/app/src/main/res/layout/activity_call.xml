@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CallActivity">
+
+    <TextView
+        android:id="@+id/text_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="display name" />
+
+    <TextView
+        android:id="@+id/text_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_display"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_display"
+        tools:text="00:15" />
+
+    <LinearLayout
+        android:id="@+id/layout_incoming_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/btn_reject_call"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="End Call" />
+
+        <Button
+            android:id="@+id/btn_answer_call"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Answer Call" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_calling_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ToggleButton
+            android:id="@+id/toggle_speaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:checked="false"
+            android:textAllCaps="false"
+            android:textOff="Speaker On"
+            android:textOn="Speaker Off"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_end_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="End Call"
+            android:visibility="visible" />
+
+        <ToggleButton
+            android:id="@+id/toggle_mute_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:checked="false"
+            android:textAllCaps="false"
+            android:textOff="Mute"
+            android:textOn="UnMute"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
