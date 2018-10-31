@@ -92,6 +92,7 @@ public class ChannelActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 此处要remove FYRtcEventHandler
         DemoApp.instance().removeEventHandler(mRtcEventHandler);
         if (mHandler != null) {
             if (mHandler.hasMessages(MSG_COUNTER)) {

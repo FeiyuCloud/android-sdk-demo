@@ -60,7 +60,7 @@ public static FYRtcEngine create(Context context, String appId, String appToken,
 | context | 是 | 应用程序上下文 |
 | appId | 是 | 应用id |
 | appToken | 是 | 应用token |
-| handler | 是 | 一个提供了缺省实现的抽象类，SDK通过该抽象类向报告SDK运行时的各种事件 |
+| handler | 是 | 一个提供了缺省实现的抽象类，SDK通过该抽象类报告运行时的各种事件 |
 
 <br/>
 
@@ -73,8 +73,8 @@ public void joinChannel(String channelId, String uid, FYOptionData option);
 | 参数 | 是否必须 | 描述 |
 | ---- | :---- | :---- |
 | channelId | 是 | 频道id，字符串，数字，\_，长度不超过40位 |
-| uid | 否 | 用户id，为空时sdk会生成一个uuid作为uid |
-| option | 否 | 选项，可以配置最大时长，是否录音和偷传数据 |
+| uid | 否 | 用户id，为空时SDK会生成一个uuid作为uid |
+| option | 否 | 选项，可以配置最大时长，是否录音和透传数据 |
 
 <br/>
 
@@ -87,7 +87,7 @@ public void dialPeer(String calleeUid, String callerUid, FYOptionData option);
 | 参数 | 是否必须 | 描述 |
 | --- | --- | --- |
 | calleeUid | 是 | 被叫用户id |
-| callerUid | 否 | 主叫用户id，为空时sdk会生成一个uid |
+| callerUid | 否 | 主叫用户id，为空时SDK会生成一个uid |
 | option | 否 | 呼叫选项，可配置最大时长，是否录音，透传数据 |
 
 <br/>

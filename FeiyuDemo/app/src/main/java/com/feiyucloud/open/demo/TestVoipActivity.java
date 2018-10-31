@@ -48,7 +48,12 @@ public class TestVoipActivity extends AppCompatActivity implements View.OnClickL
             }
             CallActivity.startDial(this, uid);
         } else if (v.getId() == R.id.btn_callee_prepare) {
-            DemoApp.instance().createFYRtcEngine().calleePrepare(Utils.getUserId(this));
+            String userId = Utils.getUserId(this);
+            if (TextUtils.isEmpty(userId)) {
+                Toast.makeText(TestVoipActivity.this, "CalleePrepare userId empty", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            DemoApp.instance().createFYRtcEngine().calleePrepare(userId);
         }
     }
 

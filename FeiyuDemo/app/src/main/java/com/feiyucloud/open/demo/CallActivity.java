@@ -149,6 +149,13 @@ public class CallActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 此处要remove FYRtcEventHandler
+        DemoApp.instance().removeEventHandler(mEventHandler);
+    }
+
     private static class InternalHandler extends Handler {
         private WeakReference<CallActivity> r;
 
